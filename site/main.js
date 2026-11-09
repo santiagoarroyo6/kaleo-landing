@@ -1,27 +1,46 @@
 (() => {
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // Vídeo del inicio: horizontal en pantallas anchas, vertical en móvil
+  const root = document.documentElement;
+
+  // Vídeo del inicio: horizontal en pantallas anchas, vertical en móvil. Aparece con fundido al empezar a sonar.
   const hv = document.getElementById("hero-video");
   if (hv) {
     const tall = window.matchMedia("(max-aspect-ratio: 4/5)").matches;
+    hv.addEventListener("playing", () => hv.classList.add("is-playing"), { once: true });
     hv.src = tall ? hv.dataset.tall : hv.dataset.wide;
-    if (reduce) hv.removeAttribute("autoplay");
+    if (reduce) { hv.removeAttribute("autoplay"); hv.classList.add("is-playing"); }
   }
 
-  // Titular: cada palabra golpea la página (temblor + destello rojo)
-  const main = document.getElementById("main");
+  // Arranque: la animación espera a fuentes y logo (máx. 1,5 s) para que no haya saltos
+  const logo = document.querySelector(".hero__logo img");
+  const ready = Promise.all([
+    document.fonts ? document.fonts.ready : null,
+    logo && logo.decode ? logo.decode().catch(() => {}) : null
+  ]);
+  const timeout = new Promise(r => setTimeout(r, 1500));
+  Promise.race([ready, timeout]).then(() => requestAnimationFrame(() => requestAnimationFrame(() => root.classList.add("is-ready"))));
+
+  // Titular: cada palabra golpea al llegar (el final de su animación es el impacto)
+  const content = document.querySelector(".hero__content");
+  const bg = document.querySelector(".hero__bg");
   const flash = document.querySelector(".hit-flash");
+  const replay = (node, cls) => { if (!node) return; node.classList.remove(cls); void node.offsetWidth; node.classList.add(cls); };
   if (!reduce) {
     document.querySelectorAll(".slam").forEach(w => {
       w.addEventListener("animationend", e => {
         if (e.animationName !== "slam") return;
-        main.classList.remove("is-shaking"); void main.offsetWidth; main.classList.add("is-shaking");
-        if (flash) { flash.classList.remove("is-on"); void flash.offsetWidth; flash.classList.add("is-on"); }
+        e.stopPropagation();
+        w.classList.add("is-done");
+        replay(content, "is-hit"); replay(bg, "is-hit"); replay(flash, "is-on");
       });
     });
-    main.addEventListener("animationend", e => { if (e.animationName === "shake") main.classList.remove("is-shaking"); });
+    [content, bg, flash].forEach(n => n && n.addEventListener("animationend", e => {
+      if (e.target !== n) return;
+      n.classList.remove("is-hit", "is-on");
+    }));
   }
+
   // Apertura: viernes 20 nov 2026, 10 PM a 3:30 AM, hora de Sydney (AEDT, UTC+11)
   const START = Date.parse("2026-11-20T22:00:00+11:00");
   const END = Date.parse("2026-11-21T03:30:00+11:00");
@@ -50,6 +69,14 @@
     setTimeout(tick, 1000 - (now % 1000));
   }
   tick();
+
+
+  // Barra de entradas: aparece cuando los botones del inicio salen de pantalla
+  const tb = document.getElementById("ticketbar");
+  const heroActions = document.querySelector(".hero__actions");
+  if (tb && heroActions && "IntersectionObserver" in window) {
+    new IntersectionObserver(([e]) => tb.classList.toggle("is-visible", !e.isIntersecting && e.boundingClientRect.top < 0), { threshold: 0 }).observe(heroActions);
+  } else if (tb) { tb.classList.add("is-visible"); }
 
   // Barra de navegación sólida al hacer scroll
   const nav = document.querySelector(".nav");
