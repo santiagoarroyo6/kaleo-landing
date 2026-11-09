@@ -172,13 +172,13 @@ a { color: inherit; }
 .hero__tag i { font-style: normal; color: var(--red-hot); }
 .hero__tag .live-dot { background: var(--red-hot); box-shadow: 0 0 12px var(--red-hot); }
 
-.hero__logo { position: relative; width: min(64vw, 500px); }
+.hero__logo { position: relative; width: min(64vw, 440px); }
 .hero__logo::before { content: ""; position: absolute; inset: -18% -8%; z-index: -1; background: radial-gradient(50% 50% at 50% 50%, rgba(255, 50, 30, .55), transparent 70%); animation: glow-pulse 4s ease-in-out infinite; will-change: opacity; }
 .hero__logo img { width: 100%; height: auto; filter: brightness(1.18) saturate(1.15); }
 @keyframes glow-pulse { 0%, 100% { opacity: .55; } 50% { opacity: 1; } }
 
 .headline { margin: 22px 0 0; font-family: "Anton", Impact, sans-serif; font-weight: 400; text-transform: uppercase; line-height: .96; letter-spacing: .01em; }
-.headline__line { display: block; font-size: clamp(58px, 10vw, 146px); color: var(--cream); text-shadow: 0 4px 30px rgba(0, 0, 0, .6); }
+.headline__line { display: block; font-size: clamp(58px, 9vw, 132px); color: var(--cream); text-shadow: 0 4px 30px rgba(0, 0, 0, .6); }
 .headline__line--red { color: var(--red); text-shadow: var(--glow); }
 .slam { display: inline-block; opacity: 0; transform: scale(2.4); will-change: transform, opacity; animation: slam .36s cubic-bezier(.6, 0, .9, .4) var(--d, 0s) forwards; }
 @keyframes slam {
@@ -199,6 +199,31 @@ a { color: inherit; }
 }
 .hero__bg.is-hit { animation: bg-pulse .3s ease-out; }
 @keyframes bg-pulse { 0% { transform: scale(1.025); } 100% { transform: scale(1); } }
+
+.hero__meta { list-style: none; margin: 24px 0 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 0; }
+.hero__meta li { font-size: clamp(13px, 1.4vw, 16px); font-weight: 800; letter-spacing: .24em; text-transform: uppercase; color: var(--cream); padding: 0 22px; }
+.hero__meta li + li { border-left: 1px solid rgba(255, 90, 70, .55); }
+
+/* contador: marcador de discoteca, dígitos grandes y los segundos en rojo neón */
+.countdown { margin-top: 26px; display: flex; flex-direction: column; align-items: center; }
+.countdown__label { margin: 0 0 10px; display: flex; align-items: center; gap: 12px; font-size: 12px; text-shadow: 0 0 12px rgba(255, 60, 40, .6); font-weight: 800; letter-spacing: .4em; text-transform: uppercase; color: var(--red-hot); }
+.countdown__label::before, .countdown__label::after { content: ""; width: 34px; height: 1px; background: linear-gradient(90deg, transparent, var(--red-hot)); }
+.countdown__label::after { transform: scaleX(-1); }
+.countdown__row { display: flex; align-items: flex-start; }
+.countdown__unit { display: flex; flex-direction: column; align-items: center; min-width: 1.6em; font-size: clamp(54px, 5.6vw, 76px); }
+.countdown__unit b {
+  display: block; height: 1em; font-family: "Anton", Impact, sans-serif; font-weight: 400; font-size: 1em; line-height: 1;
+  color: var(--cream); font-variant-numeric: tabular-nums; letter-spacing: .02em; text-shadow: 0 0 24px rgba(255, 70, 50, .35);
+}
+.countdown__unit b i { display: block; font-style: normal; }
+.countdown__unit b i.is-tick { animation: tick .45s var(--ease); }
+@keyframes tick { from { transform: translate3d(0, -70%, 0); opacity: 0; } to { transform: none; opacity: 1; } }
+.countdown__unit--sec b { color: var(--red-hot); text-shadow: var(--glow); }
+.countdown__unit span { margin-top: 10px; font-size: 10px; font-weight: 800; letter-spacing: .32em; text-transform: uppercase; color: #CDB3A9; }
+.countdown__sep { font-family: "Anton", Impact, sans-serif; font-size: clamp(40px, 4.6vw, 64px); line-height: 1.2; color: var(--red); padding: 0 .12em; animation: sep-blink 1s steps(2, start) infinite; }
+@keyframes sep-blink { to { opacity: .25; } }
+.countdown__live { margin: 30px 0 0; font-family: "Anton", Impact, sans-serif; font-size: 34px; text-transform: uppercase; color: #fff; text-shadow: var(--glow); }
+.hero__actions { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
 
 .hero-in { opacity: 0; transform: translate3d(0, 16px, 0); animation: hero-in .9s var(--ease) var(--d, 0s) forwards; }
 html:not(.is-ready) .hero-in, html:not(.is-ready) .slam { animation-play-state: paused; }
@@ -368,6 +393,10 @@ html:not(.is-ready) .hero-in, html:not(.is-ready) .slam { animation-play-state: 
   .hero__meta { flex-direction: column; gap: 8px; margin-top: 24px; }
   .hero__meta li + li { border-left: 0; }
   .hero__meta li { font-size: 12px; }
+  .countdown { margin-top: 26px; }
+  .countdown__unit { font-size: 15vw; min-width: 1.5em; }
+  .countdown__sep { font-size: 10vw; padding: 0 .04em; }
+  .countdown__unit span { font-size: 9px; letter-spacing: .22em; }
   .countdown { gap: 8px; margin-top: 26px; }
   .countdown__unit { min-width: 0; flex: 1; padding: 10px 6px 8px; }
   .countdown__unit b { font-size: 34px; }
