@@ -20,7 +20,7 @@ float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
 float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);
   return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}
 float fbm(vec2 p){float v=0.,a=.5;mat2 R=mat2(.8,.6,-.6,.8);
-  for(int i=0;i<${coarse ? 4 : 5};i++){v+=a*n(p);p=R*p*2.03;a*=.5;}return v;}
+  for(int i=0;i<${coarse ? 3 : 4};i++){v+=a*n(p);p=R*p*2.03;a*=.5;}return v;}
 void main(){
   vec2 uv=gl_FragCoord.xy/r; float asp=r.x/r.y;
   vec2 p=vec2(uv.x*asp,uv.y)*2.4;
@@ -31,9 +31,9 @@ void main(){
   float f=fbm(p+3.*w+vec2(0.,-t*.09));
   float body=smoothstep(.35,.95,f);
   float low=mix(1.,.45,smoothstep(.0,.9,uv.y));      // más humo abajo
-  vec3 deep=vec3(.32,.03,.02), red=vec3(.95,.16,.10), hot=vec3(1.,.55,.42);
+  vec3 deep=vec3(.20,.015,.01), red=vec3(.58,.05,.03), hot=vec3(.85,.22,.15);
   vec3 col=mix(deep,red,body); col=mix(col,hot,smoothstep(.75,1.,f)*.6);
-  float a=body*low*.85;
+  float a=body*low*.75;
   col+=hot*md*.55; a+=md*.35;                        // foco donde tocas
   a*=1.+hit*.9; col*=1.+hit*.6;                      // pulso con cada golpe del titular
   gl_FragColor=vec4(col*a,a);
@@ -54,7 +54,7 @@ void main(){
     host.classList.add("has-smoke");
 
     // resolución baja a propósito: el humo es suave y así va fluido en móvil
-    const scale = coarse ? .35 : .5;
+    const scale = coarse ? .25 : .4;
     const resize = () => {
       const w = Math.max(2, Math.round(host.clientWidth * scale)), h2 = Math.max(2, Math.round(host.clientHeight * scale));
       if (canvas.width !== w || canvas.height !== h2) { canvas.width = w; canvas.height = h2; gl.viewport(0, 0, w, h2); }
@@ -73,6 +73,7 @@ void main(){
     let on = true, raf = 0, last = performance.now(), t = Math.random() * 50;
     const frame = now => {
       raf = 0; if (!on) return;
+      if (coarse && now - last < 30) { raf = requestAnimationFrame(frame); return; }
       const dt = Math.min(.05, (now - last) / 1000); last = now; t += dt;
       cur.x += (target.x - cur.x) * Math.min(1, dt * 5); cur.y += (target.y - cur.y) * Math.min(1, dt * 5);
       target.a = Math.max(0, target.a - dt * .35); cur.a += (target.a - cur.a) * Math.min(1, dt * 4);
