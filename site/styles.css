@@ -392,6 +392,7 @@ html.has-intro body { overflow: hidden; }
 .cine__stage { padding: clamp(90px, 12vw, 160px) var(--gutter) 40px; max-width: var(--wrap); margin: 0 auto; }
 .cine__glow, .cine__flash { display: none; }
 .manifesto__after .manifesto__copy { max-width: 620px; }
+.manifesto__head { margin-bottom: clamp(36px, 5vw, 60px); }
 /* versión animada (la activa fx.js) */
 .cine.is-on { height: 320vh; position: relative; }
 .cine.is-on .cine__stage { position: sticky; top: 0; height: 100vh; height: 100svh; max-width: none; padding: 0; overflow: hidden; }
