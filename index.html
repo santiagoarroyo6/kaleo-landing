@@ -23,7 +23,7 @@
 <link rel="preload" href="assets/fonts/anton.woff" as="font" type="font/woff" crossorigin>
 <link rel="preload" href="assets/img/kaleo-logo-lacquer.webp" as="image">
 <link rel="preload" href="assets/img/kaleo-hero-poster.jpg" as="image">
-<link rel="stylesheet" href="styles.css?v=20261109c">
+<link rel="stylesheet" href="styles.css?v=20261109d">
 <script>document.documentElement.classList.remove("no-js")</script>
 <script type="application/ld+json">
 {
@@ -113,10 +113,16 @@
 
       <p class="sr-only">Opens Friday 20 November at 10 PM.</p>
       <div class="countdown hero-in" style="--d:2.2s" id="countdown" aria-hidden="true">
-        <div class="countdown__unit"><b data-cd="d">00</b><span>Days</span></div>
-        <div class="countdown__unit"><b data-cd="h">00</b><span>Hours</span></div>
-        <div class="countdown__unit"><b data-cd="m">00</b><span>Mins</span></div>
-        <div class="countdown__unit"><b data-cd="s">00</b><span>Secs</span></div>
+        <p class="countdown__label">Doors open in</p>
+        <div class="countdown__row">
+          <div class="countdown__unit"><b data-cd="d"><i>00</i></b><span>Days</span></div>
+          <span class="countdown__sep">:</span>
+          <div class="countdown__unit"><b data-cd="h"><i>00</i></b><span>Hrs</span></div>
+          <span class="countdown__sep">:</span>
+          <div class="countdown__unit"><b data-cd="m"><i>00</i></b><span>Min</span></div>
+          <span class="countdown__sep">:</span>
+          <div class="countdown__unit countdown__unit--sec"><b data-cd="s"><i>00</i></b><span>Sec</span></div>
+        </div>
       </div>
       <p class="countdown__live" id="countdown-live" aria-live="polite" hidden>We’re live. Get down here.</p>
 
@@ -286,6 +292,6 @@
   </div>
 </footer>
 
-<script src="main.js?v=20261109c" defer></script>
+<script src="main.js?v=20261109d" defer></script>
 </body>
 </html>

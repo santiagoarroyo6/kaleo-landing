@@ -50,6 +50,13 @@
   const el = k => cd && cd.querySelector(`[data-cd="${k}"]`);
   const parts = { d: el("d"), h: el("h"), m: el("m"), s: el("s") };
   const pad = n => String(n).padStart(2, "0");
+  // cambia el número con una caída suave solo cuando cambia
+  const set = (node, v) => {
+    const i = node.firstElementChild || node;
+    if (i.textContent === v) return;
+    i.textContent = v;
+    if (!reduce) { i.classList.remove("is-tick"); void i.offsetWidth; i.classList.add("is-tick"); }
+  };
 
   function tick() {
     if (!cd) return;
@@ -64,8 +71,7 @@
     const d = Math.floor(t / 86400); t -= d * 86400;
     const h = Math.floor(t / 3600); t -= h * 3600;
     const m = Math.floor(t / 60); const s = t - m * 60;
-    parts.d.textContent = pad(d); parts.h.textContent = pad(h);
-    parts.m.textContent = pad(m); parts.s.textContent = pad(s);
+    set(parts.d, pad(d)); set(parts.h, pad(h)); set(parts.m, pad(m)); set(parts.s, pad(s));
     setTimeout(tick, 1000 - (now % 1000));
   }
   tick();
