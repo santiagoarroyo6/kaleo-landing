@@ -7,12 +7,12 @@
 <meta name="description" content="KALEO, Sydney's Friday Latin party, has a new home. Grand Opening Friday 20 November, 10 PM – 3:30 AM at 561 George St (downstairs at Cheers Bar). Reggaeton, Latin &amp; international hits. 18+.">
 <!-- Vista previa para Tavo: quitar noindex cuando la web tenga su dominio definitivo -->
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#F8E9D8">
+<meta name="theme-color" content="#0A0505">
 <meta property="og:type" content="website">
 <meta property="og:title" content="KALEO — New Home. New Vibe.">
 <meta property="og:description" content="Grand Opening · Friday 20 November · 10 PM – 3:30 AM · 561 George St, Sydney (Cheers Bar).">
 <meta property="og:url" content="https://santiagoarroyo6.github.io/kaleo-landing/">
-<meta property="og:image" content="https://santiagoarroyo6.github.io/kaleo-landing/assets/img/og-kaleo-opening.jpg">
+<meta property="og:image" content="https://santiagoarroyo6.github.io/kaleo-landing/assets/img/og-kaleo-opening.jpg?v=4">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -22,7 +22,8 @@
 <link rel="preload" href="assets/fonts/montserrat-vf.woff" as="font" type="font/woff" crossorigin>
 <link rel="preload" href="assets/fonts/anton.woff" as="font" type="font/woff" crossorigin>
 <link rel="preload" href="assets/img/kaleo-logo-lacquer.webp" as="image">
-<link rel="stylesheet" href="styles.css?v=20261108c">
+<link rel="preload" href="assets/img/family-3.jpg" as="image">
+<link rel="stylesheet" href="styles.css?v=20261109a">
 <script>document.documentElement.classList.remove("no-js")</script>
 <script type="application/ld+json">
 {
@@ -34,7 +35,7 @@
   "endDate": "2026-11-21T03:30:00+11:00",
   "eventStatus": "https://schema.org/EventScheduled",
   "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-  "image": ["https://santiagoarroyo6.github.io/kaleo-landing/assets/img/og-kaleo-opening.jpg"],
+  "image": ["https://santiagoarroyo6.github.io/kaleo-landing/assets/img/og-kaleo-opening.jpg?v=4"],
   "location": {
     "@type": "Place",
     "name": "Cheers Bar (downstairs)",
@@ -56,7 +57,7 @@
 
 <header class="nav" id="top">
   <a class="nav__logo" href="#top" aria-label="KALEO home">
-    <img src="assets/img/kaleo-logo-red.svg" alt="KALEO" width="124" height="40">
+    <img src="assets/img/kaleo-logo-cream.svg" alt="KALEO" width="124" height="40">
   </a>
   <nav class="nav__links" aria-label="Sections">
     <a href="#family">The Family</a>
@@ -64,7 +65,7 @@
     <a href="#night">The Night</a>
     <a href="#info">FAQ</a>
   </nav>
-  <a class="nav__where" href="#night">Fri 20 Nov</a>
+  <a class="nav__cta" href="#night"><span class="nav__dot" aria-hidden="true"></span>Big Opening</a>
 </header>
 
 <main id="main">
@@ -72,38 +73,45 @@
   <!-- HERO -->
   <section class="hero" aria-labelledby="hero-title">
     <div class="hero__bg" aria-hidden="true">
-      <div class="hero__light"></div>
-      <img class="hero__palm hero__palm--far" src="assets/img/palm-far.webp" alt="">
-      <img class="hero__palm hero__palm--a" src="assets/img/palm-near.webp" alt="">
-      <img class="hero__palm hero__palm--b" src="assets/img/palm-near.webp" alt="">
-      <img class="hero__rays" src="assets/img/palm-light.webp" alt="">
-      <img class="hero__brush hero__brush--tl" src="assets/img/brush-1.webp" alt="">
-      <img class="hero__brush hero__brush--br" src="assets/img/brush-2.webp" alt="">
+      <div class="hero__photos">
+        <img src="assets/img/family-3.jpg" alt="">
+        <img src="assets/img/family-4.jpg" alt="" loading="lazy">
+        <img src="assets/img/family-1.jpg" alt="" loading="lazy">
+      </div>
+      <div class="hero__grade"></div>
+      <div class="beams">
+        <span class="beam beam--1"></span><span class="beam beam--2"></span>
+        <span class="beam beam--3"></span><span class="beam beam--4"></span>
+        <span class="beam beam--5"></span>
+      </div>
+      <div class="lasers"><span></span><span></span><span></span><span></span></div>
+      <img class="haze" src="assets/img/haze.webp" alt="">
+      <div class="strobe"></div>
+      <div class="hero__vignette"></div>
+      <div class="eq"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
     </div>
 
     <div class="hero__content">
-      <div class="hero__logo hero-in" style="--d:.15s">
+      <p class="hero__tag hero-in" style="--d:.1s"><span class="live-dot" aria-hidden="true"></span>Grand Opening <i aria-hidden="true">/</i> Friday 20 Nov</p>
+
+      <div class="hero__logo hero-in" style="--d:.25s">
         <img src="assets/img/kaleo-logo-lacquer.webp" alt="KALEO" width="1400" height="339">
-        <span class="spark spark--logo" aria-hidden="true"></span>
       </div>
 
       <h1 id="hero-title" class="headline">
         <span class="sr-only">KALEO — </span>
-        <span class="headline__line hero-in" style="--d:.45s" data-text="New Home.">New Home.</span>
-        <span class="headline__line hero-in" style="--d:.65s" data-text="New Vibe.">New Vibe.</span>
-        <span class="spark spark--a" aria-hidden="true"></span>
-        <span class="spark spark--b" aria-hidden="true"></span>
+        <span class="headline__line hero-in" style="--d:.5s">New Home.</span>
+        <span class="headline__line headline__line--glow hero-in" style="--d:.7s" data-text="New Vibe.">New Vibe.</span>
       </h1>
 
-      <p class="hero__opening hero-in" style="--d:.9s">Grand Opening <i aria-hidden="true">·</i> Friday 20 Nov</p>
-      <p class="hero__bigger hero-in" style="--d:1.05s">Bigger. Better.</p>
-      <p class="hero__where hero-in" style="--d:1.2s">
-        <span>561 George St</span>
-        <span>10 PM – 3:30 AM</span>
-      </p>
+      <ul class="hero__meta hero-in" style="--d:.95s">
+        <li>561 George St</li>
+        <li>10 PM – 3:30 AM</li>
+        <li>Reggaeton · Latin · Hits</li>
+      </ul>
 
       <p class="sr-only">Opens Friday 20 November at 10 PM.</p>
-      <div class="countdown hero-in" style="--d:1.35s" id="countdown" aria-hidden="true">
+      <div class="countdown hero-in" style="--d:1.1s" id="countdown" aria-hidden="true">
         <div class="countdown__unit"><b data-cd="d">00</b><span>Days</span></div>
         <div class="countdown__unit"><b data-cd="h">00</b><span>Hours</span></div>
         <div class="countdown__unit"><b data-cd="m">00</b><span>Mins</span></div>
@@ -111,22 +119,39 @@
       </div>
       <p class="countdown__live" id="countdown-live" aria-live="polite" hidden>We’re live. Get down here.</p>
 
-      <a class="scroll-cue hero-in" style="--d:1.5s" href="#manifesto" aria-label="Scroll down"><span></span></a>
+      <div class="hero__actions hero-in" style="--d:1.25s">
+        <a class="btn btn--red" href="kaleo-grand-opening.ics" download>Add to calendar</a>
+        <a class="btn btn--ghost" href="#venue">How to get there</a>
+      </div>
     </div>
+
   </section>
+
+  <!-- TICKER -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__band ticker__band--red">
+      <div class="ticker__track">
+        <span>Big Opening</span><i>✦</i><span>Fri 20 Nov</span><i>✦</i><span>Reggaeton</span><i>✦</i><span>Latin</span><i>✦</i><span>International Hits</span><i>✦</i><span>561 George St</span><i>✦</i>
+        <span>Big Opening</span><i>✦</i><span>Fri 20 Nov</span><i>✦</i><span>Reggaeton</span><i>✦</i><span>Latin</span><i>✦</i><span>International Hits</span><i>✦</i><span>561 George St</span><i>✦</i>
+      </div>
+    </div>
+    <div class="ticker__band ticker__band--dark">
+      <div class="ticker__track ticker__track--rev">
+        <span>New Home</span><i>✦</i><span>New Vibe</span><i>✦</i><span>Bigger</span><i>✦</i><span>Better</span><i>✦</i><span>10 PM – 3:30 AM</span><i>✦</i><span>Downstairs at Cheers Bar</span><i>✦</i>
+        <span>New Home</span><i>✦</i><span>New Vibe</span><i>✦</i><span>Bigger</span><i>✦</i><span>Better</span><i>✦</i><span>10 PM – 3:30 AM</span><i>✦</i><span>Downstairs at Cheers Bar</span><i>✦</i>
+      </div>
+    </div>
+  </div>
 
   <!-- MANIFESTO -->
   <section class="manifesto" id="manifesto" aria-labelledby="manifesto-title">
-    <div class="manifesto__bg" aria-hidden="true">
-      <img class="manifesto__palm" src="assets/img/palm-near.webp" alt="">
-    </div>
     <div class="wrap manifesto__grid">
       <div>
         <p class="eyebrow reveal">A new era</p>
         <h2 id="manifesto-title" class="stack reveal">
           <span>Louder.</span>
-          <span>Elevated.</span>
-          <span>International.</span>
+          <span class="stack__outline">Elevated.</span>
+          <span class="stack__red">International.</span>
         </h2>
       </div>
       <div class="manifesto__copy reveal">
@@ -159,14 +184,11 @@
 
   <!-- THE VENUE -->
   <section class="venue" id="venue" aria-labelledby="venue-title">
-    <div class="venue__deco" aria-hidden="true">
-      <span class="venue__num">561</span>
-      <span class="venue__beam"></span>
-    </div>
+    <div class="venue__deco" aria-hidden="true"><span class="venue__num">561</span></div>
     <div class="wrap venue__grid">
       <div class="venue__text">
-        <p class="eyebrow eyebrow--light reveal">New venue. New energy.</p>
-        <h2 id="venue-title" class="h2 h2--light reveal">Downstairs at<br>Cheers Bar</h2>
+        <p class="eyebrow reveal">New venue. New energy.</p>
+        <h2 id="venue-title" class="h2 reveal">Downstairs at<br><em>Cheers Bar</em></h2>
         <p class="reveal">Walk in at 561 George St, head down the stairs and follow the music. Big screens, next-level production — right in the heart of the Sydney CBD.</p>
       </div>
       <div class="venue__media">
@@ -186,14 +208,14 @@
             loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
         <div class="getthere__info">
-          <p class="eyebrow eyebrow--light">How to get there</p>
+          <p class="eyebrow">How to get there</p>
           <address>
             <strong>561 George St</strong>
             Sydney NSW 2000<br>
             <span>Downstairs at Cheers Bar</span>
           </address>
           <p class="getthere__note">A short walk from Town Hall Station.</p>
-          <a class="btn-line" href="https://www.google.com/maps/search/?api=1&amp;query=Cheers+Bar+561+George+St+Sydney+NSW+2000" target="_blank" rel="noopener">Open in Maps <span aria-hidden="true">↗</span></a>
+          <a class="btn btn--ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Cheers+Bar+561+George+St+Sydney+NSW+2000" target="_blank" rel="noopener">Open in Maps <span aria-hidden="true">↗</span></a>
         </div>
       </div>
     </div>
@@ -201,11 +223,14 @@
 
   <!-- THE NIGHT -->
   <section class="night" id="night" aria-labelledby="night-title">
-    <img class="night__palm" src="assets/img/palm-near.webp" alt="" aria-hidden="true">
+    <div class="night__glow" aria-hidden="true"></div>
     <div class="wrap">
-      <div class="section-head reveal">
-        <p class="eyebrow">Fri 20 Nov</p>
-        <h2 id="night-title" class="h2">The Night</h2>
+      <div class="night__head reveal">
+        <p class="night__date" aria-hidden="true">20<span>.</span>11</p>
+        <div>
+          <p class="eyebrow">Big Opening</p>
+          <h2 id="night-title" class="h2">The Night</h2>
+        </div>
       </div>
       <dl class="facts">
         <div class="fact reveal">
@@ -230,7 +255,6 @@
 
   <!-- INFO -->
   <section class="info" id="info" aria-labelledby="info-title">
-    <img class="info__brush" src="assets/img/brush-2.webp" alt="" aria-hidden="true">
     <div class="wrap info__grid">
       <div class="section-head reveal">
         <p class="eyebrow">Good to know</p>
@@ -267,13 +291,19 @@
 
   <!-- CLOSER -->
   <section class="closer" aria-labelledby="closer-title">
+    <div class="closer__bg" aria-hidden="true">
+      <div class="beams beams--closer">
+        <span class="beam beam--1"></span><span class="beam beam--3"></span><span class="beam beam--5"></span>
+      </div>
+      <img class="haze" src="assets/img/haze.webp" alt="" loading="lazy">
+    </div>
     <div class="wrap closer__inner reveal">
       <p class="eyebrow closer__when"><span>Friday 20 November</span><span>10 PM – 3:30 AM</span></p>
-      <h2 id="closer-title" class="closer__title">See you downstairs.</h2>
+      <h2 id="closer-title" class="closer__title">See you <span>downstairs.</span></h2>
       <p class="closer__sub"><span>561 George St, Sydney</span><span>Cheers Bar</span></p>
       <div class="closer__actions">
-        <a class="btn-solid" href="kaleo-grand-opening.ics" download>Add to calendar</a>
-        <a class="btn-outline" id="share-wa" href="https://wa.me/?text=KALEO%20Grand%20Opening%20%E2%80%94%20New%20Home.%20New%20Vibe.%20Fri%2020%20Nov%2C%2010%20PM%20%E2%80%93%203%3A30%20AM%2C%20561%20George%20St%2C%20Sydney" target="_blank" rel="noopener">Share on WhatsApp</a>
+        <a class="btn btn--red" href="kaleo-grand-opening.ics" download>Add to calendar</a>
+        <a class="btn btn--ghost" id="share-wa" href="https://wa.me/?text=KALEO%20Grand%20Opening%20%E2%80%94%20New%20Home.%20New%20Vibe.%20Fri%2020%20Nov%2C%2010%20PM%20%E2%80%93%203%3A30%20AM%2C%20561%20George%20St%2C%20Sydney" target="_blank" rel="noopener">Share on WhatsApp</a>
       </div>
     </div>
   </section>
@@ -288,6 +318,6 @@
   </div>
 </footer>
 
-<script src="main.js?v=20261108c" defer></script>
+<script src="main.js?v=20261109a" defer></script>
 </body>
 </html>

@@ -1,9 +1,11 @@
 # KALEO · web de la apertura (vista previa para Tavo)
 
 Web estática de una página para la **Grand Opening del viernes 20 nov 2026**, 10 PM – 3:30 AM,
-561 George St (downstairs at Cheers Bar). Diseño basado en el flyer oficial "New Home. New Vibe" (8 nov):
-crema con sombras de palmeras, pinceladas rojas en las esquinas, logo lacado (E), titular 3D en Montserrat Black
-y "BIGGER. BETTER." en Anton. La cabecera se mueve (palmeras, luz, brillo del logo) sin fuego ni difuminados.
+561 George St (downstairs at Cheers Bar). **Versión 4 (9 nov): estilo discoteca oscuro**, a petición del dueño
+("que la gente diga wow, aquí hay fiesta"; referencias: iRock, Home The Venue, Perro Negro). Fondo negro y rojo,
+fotos reales de la fiesta teñidas de rojo en el inicio, haces de luz, láseres, humo, destello y ecualizador en CSS,
+cintas de texto en movimiento, botón "BIG OPENING" en la barra de arriba. La v3 (crema, estilo flyer) quedó en el
+historial de git (commit eef78b6).
 **Sin botón de compra** (pedido del dueño, 6 nov). Texto público en inglés.
 
 ## Estructura
@@ -31,7 +33,8 @@ Servicio App → fuente Dockerfile (o subir esta carpeta) → puerto 80 → domi
 ## De dónde sale cada asset
 - Cabecera: logo lacado `LOGO_KALEO_FINAL/E_LACADO_FISICO/KALEO_LOGO_E_LACADO_ROJO_IMPRESION_6000px.png` (1400 px WebP).
 - Pinceladas: `02_HERRAMIENTAS_IA/KALEO_WEB_PINCELADAS_FINAL.py` (gratis). Palmeras en capa: `KALEO_WEB_PALMAS_FINAL.py`.
-- Imagen para compartir: `02_HERRAMIENTAS_IA/KALEO_WEB_OG_FINAL.py`.
+- Imagen para compartir (oscura, v4): `02_HERRAMIENTAS_IA/KALEO_WEB_OG_OSCURO_FINAL.py`. Humo: `KALEO_WEB_HUMO_FINAL.py`.
+- Pinceladas y palmeras (v3) ya no se usan en la página; siguen en `site/assets/img/`.
 - El vídeo de fuego de la primera versión se retiró (8 nov): está en `_SALIDAS/KALEO_WEB/RETIRADOS_DE_LA_WEB/`.
 - Vídeo y fotos del venue: `KALEO/VIDEO NEW VENUE MATERIAL/video para cortar Kaleo.mp4` (seg. 105–114; fotos en 40, 66, 86, 184 s).
 - Fotos de la gente: `KALEO/KALEO FOTOS/SIN_MARCA/` (capturas ~700 px; cambiar por originales en alta).
