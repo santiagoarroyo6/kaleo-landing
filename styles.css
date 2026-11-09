@@ -384,7 +384,7 @@ html.has-intro body { overflow: hidden; }
 .has-smoke > .haze { display: none; }
 
 /* ================= SCROLL DE CINE (manifiesto) ================= */
-.manifesto { padding: 0 0 clamp(80px, 10vw, 140px); }
+.manifesto { padding: clamp(80px, 10vw, 140px) 0; }
 .cine__words { margin: 0; font-family: "Anton", Impact, sans-serif; font-weight: 400; text-transform: uppercase; line-height: .92; font-size: clamp(54px, 8.4vw, 124px); }
 .cine__word { display: block; color: var(--cream); }
 .cine__word--outline { color: transparent; -webkit-text-stroke: 1.5px rgba(251, 242, 230, .8); }
