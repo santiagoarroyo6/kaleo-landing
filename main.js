@@ -19,7 +19,26 @@
     logo && logo.decode ? logo.decode().catch(() => {}) : null
   ]);
   const timeout = new Promise(r => setTimeout(r, 1500));
-  Promise.race([ready, timeout]).then(() => requestAnimationFrame(() => requestAnimationFrame(() => root.classList.add("is-ready"))));
+  const go = () => requestAnimationFrame(() => requestAnimationFrame(() => root.classList.add("is-ready")));
+
+  // Intro "drop": negro, destello y el logo explota hacia ti; al salir empiezan los golpes del titular
+  const intro = document.getElementById("intro");
+  const playIntro = () => new Promise(done => {
+    if (!intro || !root.classList.contains("has-intro")) { if (intro) intro.remove(); return done(); }
+    try { sessionStorage.setItem("kaleoIntro", "1"); } catch (e) {}
+    let finished = false;
+    const finish = () => {
+      if (finished) return; finished = true;
+      intro.classList.add("is-out");
+      root.classList.remove("has-intro");
+      done();
+      setTimeout(() => intro.remove(), 500);
+    };
+    intro.addEventListener("pointerdown", finish, { once: true });   // tocar para saltar
+    requestAnimationFrame(() => intro.classList.add("is-playing"));
+    setTimeout(finish, 1050);
+  });
+  Promise.race([ready, timeout]).then(playIntro).then(go);
 
   // Titular: cada palabra golpea al llegar (el final de su animación es el impacto)
   const content = document.querySelector(".hero__content");
@@ -33,6 +52,7 @@
         e.stopPropagation();
         w.classList.add("is-done");
         replay(content, "is-hit"); replay(bg, "is-hit"); replay(flash, "is-on");
+        window.dispatchEvent(new Event("kaleo:hit"));
       });
     });
     [content, bg, flash].forEach(n => n && n.addEventListener("animationend", e => {
