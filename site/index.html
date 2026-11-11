@@ -22,7 +22,7 @@
 <link rel="preload" href="assets/fonts/anton.woff" as="font" type="font/woff" crossorigin>
 <link rel="preload" href="assets/img/kaleo-logo-lacquer.webp" as="image">
 <link rel="preload" href="assets/img/kaleo-hero-poster.jpg" as="image">
-<link rel="stylesheet" href="styles.css?v=20261109h">
+<link rel="stylesheet" href="styles.css?v=20261111a">
 <script>(function(d){d.classList.remove("no-js");try{if(!matchMedia("(prefers-reduced-motion: reduce)").matches&&!sessionStorage.getItem("kaleoIntro"))d.classList.add("has-intro")}catch(e){}})(document.documentElement)</script>
 <script type="application/ld+json">
 {
@@ -132,7 +132,7 @@
       <p class="countdown__live" id="countdown-live" aria-live="polite" hidden>We’re live. Get down here.</p>
 
       <div class="hero__actions hero-in" style="--d:2.1s">
-        <a class="btn btn--red btn--big" href="https://events.humanitix.com/kaleo-wolrdwide-latin-party-every-friday-reggaeton-and-latin-hits-town-hall/tickets?dateId=6af3ddf4823547a7dbb0559b" data-checkout>Get Ticket</a>
+        <a class="btn btn--red btn--big" href="https://events.humanitix.com/kaleo-wolrdwide-latin-party-every-friday-reggaeton-and-latin-hits-town-hall?accesscode=WEB" data-ticket target="_blank" rel="noopener">Get Ticket</a>
         <a class="btn btn--ghost" href="kaleo-grand-opening.ics" download>Add to calendar</a>
       </div>
     </div>
@@ -242,7 +242,7 @@
       <h2 id="closer-title" class="closer__title">See you <span>downstairs.</span></h2>
       <p class="closer__sub"><span>561 George St, Sydney</span></p>
       <div class="closer__actions">
-        <a class="btn btn--red btn--big" href="https://events.humanitix.com/kaleo-wolrdwide-latin-party-every-friday-reggaeton-and-latin-hits-town-hall/tickets?dateId=6af3ddf4823547a7dbb0559b" data-checkout>Get Ticket</a>
+        <a class="btn btn--red btn--big" href="https://events.humanitix.com/kaleo-wolrdwide-latin-party-every-friday-reggaeton-and-latin-hits-town-hall?accesscode=WEB" data-ticket target="_blank" rel="noopener">Get Ticket</a>
         <a class="btn btn--ghost" id="share-wa" href="https://wa.me/?text=KALEO%20Grand%20Opening%20%E2%80%94%20World%20Wide%20Latin%20Party.%20Fri%2020%20Nov%2C%2010%20PM%20%E2%80%93%203%3A30%20AM%2C%20561%20George%20St%2C%20Sydney" target="_blank" rel="noopener">Share on WhatsApp</a>
       </div>
     </div>
@@ -253,17 +253,8 @@
 <!-- Barra fija de entradas: discreta, aparece al pasar el inicio -->
 <div class="ticketbar" id="ticketbar">
   <p class="ticketbar__info"><b>Grand Opening</b><span>Fri 20 Nov · 10 PM · 561 George St</span></p>
-  <a class="ticketbar__btn" href="https://events.humanitix.com/kaleo-wolrdwide-latin-party-every-friday-reggaeton-and-latin-hits-town-hall/tickets?dateId=6af3ddf4823547a7dbb0559b" data-checkout>Get Tickets</a>
+  <a class="ticketbar__btn" href="https://events.humanitix.com/kaleo-wolrdwide-latin-party-every-friday-reggaeton-and-latin-hits-town-hall?accesscode=WEB" data-ticket target="_blank" rel="noopener">Get Tickets</a>
 </div>
-
-<!-- Pago de Humanitix dentro de la web (widget ?w=true) -->
-<dialog class="checkout" id="checkout" aria-label="Get tickets">
-  <div class="checkout__bar">
-    <b>Grand Opening · Fri 20 Nov</b>
-    <button class="checkout__close" type="button" aria-label="Close">&times;</button>
-  </div>
-  <div class="checkout__body"><p class="checkout__loading">Loading tickets…</p></div>
-</dialog>
 
 <footer class="footer">
   <div class="wrap footer__inner">
@@ -275,8 +266,8 @@
   </div>
 </footer>
 
-<script src="main.js?v=20261109h" defer></script>
-<script src="fx.js?v=20261109h" defer></script>
-<script src="checkout.js?v=20261111" defer></script>
+<script src="main.js?v=20261111a" defer></script>
+<script src="fx.js?v=20261111a" defer></script>
+<script src="tickets.js?v=20261111a" defer></script>
 </body>
 </html>
