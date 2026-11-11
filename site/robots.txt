@@ -1,3 +1,2 @@
-# Vista previa: no indexar hasta tener dominio definitivo
 User-agent: *
-Disallow: /
+Allow: /
