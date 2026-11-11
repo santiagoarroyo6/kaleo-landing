@@ -43,7 +43,7 @@
       </details>
       <details>
         <summary>How do I get tickets?</summary>
-        <p>Ticket details for the Grand Opening are coming soon. Follow <a href="https://www.instagram.com/kaleoevent/" target="_blank" rel="noopener">@kaleoevent</a> for updates.</p>
+        <p>Tap <a href="https://events.humanitix.com/kaleo-wolrdwide-latin-party-every-friday-reggaeton-and-latin-hits-town-hall/tickets?dateId=6af3ddf4823547a7dbb0559b" data-checkout>Get Tickets</a> and pay right here on this page. Your tickets arrive by email from Humanitix.</p>
       </details>
     </div>
   </div>
@@ -52,8 +52,17 @@
 <!-- Barra fija de entradas: discreta, aparece al pasar el inicio -->
 <div class="ticketbar is-visible" id="ticketbar">
   <p class="ticketbar__info"><b>Grand Opening</b><span>Fri 20 Nov · 10 PM · 561 George St</span></p>
-  <a class="ticketbar__btn" href="https://www.instagram.com/kaleoevent/" target="_blank" rel="noopener">Get Tickets</a>
+  <a class="ticketbar__btn" href="https://events.humanitix.com/kaleo-wolrdwide-latin-party-every-friday-reggaeton-and-latin-hits-town-hall/tickets?dateId=6af3ddf4823547a7dbb0559b" data-checkout>Get Tickets</a>
 </div>
+
+<!-- Pago de Humanitix dentro de la web (widget ?w=true) -->
+<dialog class="checkout" id="checkout" aria-label="Get tickets">
+  <div class="checkout__bar">
+    <b>Grand Opening · Fri 20 Nov</b>
+    <button class="checkout__close" type="button" aria-label="Close">&times;</button>
+  </div>
+  <div class="checkout__body"><p class="checkout__loading">Loading tickets…</p></div>
+</dialog>
 
 <footer class="footer">
   <div class="wrap footer__inner">
@@ -62,5 +71,6 @@
     <p class="footer__small">© 2026 KALEO</p>
   </div>
 </footer>
+<script src="checkout.js?v=20261111" defer></script>
 </body>
 </html>
