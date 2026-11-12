@@ -31,7 +31,7 @@ void main(){
   float f=fbm(p+3.*w+vec2(0.,-t*.09));
   float body=smoothstep(.35,.95,f);
   float low=mix(1.,.45,smoothstep(.0,.9,uv.y));      // más humo abajo
-  vec3 deep=vec3(.20,.015,.01), red=vec3(.58,.05,.03), hot=vec3(.85,.22,.15);
+  vec3 deep=vec3(.22,.05,.01), red=vec3(.66,.18,.03), hot=vec3(.95,.42,.14);
   vec3 col=mix(deep,red,body); col=mix(col,hot,smoothstep(.75,1.,f)*.6);
   float a=body*low*.75;
   col+=hot*md*.55; a+=md*.35;                        // foco donde tocas

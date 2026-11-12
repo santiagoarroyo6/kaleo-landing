@@ -61,9 +61,9 @@
     }));
   }
 
-  // Apertura: viernes 20 nov 2026, 10 PM a 3:30 AM, hora de Sydney (AEDT, UTC+11)
+  // Apertura: viernes 20 nov 2026, 10 PM a 4 AM, hora de Sydney (AEDT, UTC+11)
   const START = Date.parse("2026-11-20T22:00:00+11:00");
-  const END = Date.parse("2026-11-21T03:30:00+11:00");
+  const END = Date.parse("2026-11-21T04:00:00+11:00");
 
   const cd = document.getElementById("countdown");
   const live = document.getElementById("countdown-live");
