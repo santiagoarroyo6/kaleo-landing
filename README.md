@@ -6,7 +6,7 @@ Web estática de una página para la **Grand Opening del viernes 20 nov 2026**, 
 fotos reales de la fiesta teñidas de rojo en el inicio, haces de luz, láseres, humo, destello y ecualizador en CSS,
 cintas de texto en movimiento, botón "BIG OPENING" en la barra de arriba. La v3 (crema, estilo flyer) quedó en el
 historial de git (commit eef78b6).
-**Entradas (11 nov):** los botones Get Ticket abren el pago de Humanitix dentro de la web (ventana con iframe en modo widget `?w=true`, fecha del 20 nov fijada con `dateId=6af3ddf4823547a7dbb0559b`). Código en `site/checkout.js`; sin JS el enlace va directo a `/tickets`. Para otra fecha, cambiar el `dateId` en `index.html` y `faq.html`. Texto público en inglés.
+**Entradas (11 nov):** los botones Get Ticket abren el pago de Humanitix dentro de la web (ventana con iframe en modo widget `?w=true`, fecha del 20 nov fijada con `dateId=6af3ddf4823547a7dbb0559b`). Código en `site/checkout.js`; sin JS el enlace va directo a `/tickets`. **Códigos de acceso (12 nov):** los enlaces llevan `accesscode=WEB`; si la visita llegó por SMS (`kaleoevent.com.au/?s=sms`), `site/tickets.js` lo cambia a `SMS` y lo recuerda 7 días. Así Humanitix separa las ventas de la web y del SMS. **Colores:** naranja quemado de Humanitix `#C03304` (12 nov). Horario: 10 PM – 4 AM. Para otra fecha, cambiar el `dateId` en `index.html` y `faq.html`. Texto público en inglés.
 
 ## Estructura
 - `site/` es la web: `index.html`, `styles.css`, `main.js`, `assets/` (logos, fotos, vídeos, fuente).
