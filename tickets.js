@@ -1,7 +1,7 @@
 // KALEO · origen de la venta: si la persona llegó desde un SMS (?s=sms), los botones de
 // entradas llevan el código SMS de Humanitix; si no, el código WEB. Se recuerda 7 días en ese móvil.
+// checkout.js abre ese mismo enlace dentro de la web, así que el código viaja al pago.
 (() => {
-  const BASE = "https://events.humanitix.com/kaleo-wolrdwide-latin-party-every-friday-reggaeton-and-latin-hits-town-hall?accesscode=";
   const KEY = "kaleoSrc", DAYS = 7;
   let src = null;
   try {
@@ -11,5 +11,7 @@
     if (saved && Date.now() - saved.t < DAYS * 864e5) src = saved.s;
   } catch (e) {}
   if (src !== "sms") return;
-  document.querySelectorAll("a[data-ticket]").forEach(a => { a.href = BASE + "SMS"; });
+  document.querySelectorAll("a[data-ticket]").forEach(a => {
+    const u = new URL(a.href); u.searchParams.set("accesscode", "SMS"); a.href = u.toString();
+  });
 })();
