@@ -23,7 +23,7 @@
 <link rel="preload" href="assets/fonts/anton.woff" as="font" type="font/woff" crossorigin>
 <link rel="preload" href="assets/img/kaleo-logo-lacquer.webp" as="image">
 <link rel="preload" href="assets/img/kaleo-hero-poster.jpg" as="image">
-<link rel="stylesheet" href="styles.css?v=20261113c">
+<link rel="stylesheet" href="styles.css?v=20261113d">
 <script>(function(d){d.classList.remove("no-js");try{if(!matchMedia("(prefers-reduced-motion: reduce)").matches&&!sessionStorage.getItem("kaleoIntro"))d.classList.add("has-intro")}catch(e){}})(document.documentElement)</script>
 <script type="application/ld+json">
 {
@@ -79,7 +79,7 @@
   <section class="hero" aria-labelledby="hero-title">
     <div class="hero__bg" aria-hidden="true">
       <video class="hero__video" id="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/img/kaleo-hero-poster.jpg"
-        data-wide="assets/video/kaleo-hero-16x9.mp4" data-tall="assets/video/kaleo-hero-9x16.mp4"></video>
+        data-wide="assets/video/kaleo-hero-16x9.mp4" data-tall="assets/video/kaleo-hero-9x16-sm.mp4"></video>
       <div class="hero__grade"></div>
       <div class="beams">
         <span class="beam beam--1"></span><span class="beam beam--2"></span>
@@ -87,7 +87,7 @@
         <span class="beam beam--5"></span>
       </div>
       <div class="lasers"><span></span><span></span><span></span><span></span></div>
-      <img class="haze" src="assets/img/haze.webp" alt="">
+      <img class="haze" src="assets/img/haze.webp" alt="" loading="lazy" decoding="async">
       <div class="strobe"></div>
       <div class="hit-flash"></div>
       <div class="hero__vignette"></div>
@@ -149,6 +149,9 @@
 
   <!-- MANIFESTO -->
   <section class="manifesto" id="manifesto">
+    <div class="manifesto__bg" aria-hidden="true">
+      <video class="manifesto__video" muted loop playsinline preload="none" poster="assets/img/kaleo-manifesto-poster.jpg" data-lazy-src="assets/video/kaleo-manifesto-red.mp4"></video>
+    </div>
     <div class="wrap manifesto__after">
       <div class="manifesto__head reveal">
         <p class="eyebrow">A new era</p>
@@ -276,9 +279,9 @@
   </div>
 </footer>
 
-<script src="main.js?v=20261113c" defer></script>
-<script src="fx.js?v=20261113c" defer></script>
-<script src="tickets.js?v=20261113c" defer></script>
-<script src="checkout.js?v=20261113c" defer></script>
+<script src="main.js?v=20261113d" defer></script>
+<script src="fx.js?v=20261113d" defer></script>
+<script src="tickets.js?v=20261113d" defer></script>
+<script src="checkout.js?v=20261113d" defer></script>
 </body>
 </html>

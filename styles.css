@@ -522,7 +522,7 @@ html.checkout-open { overflow: hidden; }
 }
 @keyframes offer-shine { 0%, 55% { transform: translate3d(-160%, 0, 0) skewX(-18deg); } 85%, 100% { transform: translate3d(330%, 0, 0) skewX(-18deg); } }
 .offer__stamp {
-  position: absolute; top: -15px; right: -10px; z-index: 2; display: grid; padding: 5px 10px; border-radius: 7px;
+  position: absolute; top: -21px; right: -10px; z-index: 2; display: grid; padding: 5px 10px; border-radius: 7px;
   background: #FFF4E8; color: var(--red); border: 1.5px solid var(--red);
   font-family: "Montserrat", system-ui, sans-serif; font-size: 10px; font-weight: 800; letter-spacing: .12em; line-height: 1.2; white-space: nowrap;
   transform: rotate(-7deg); box-shadow: 0 6px 18px rgba(0, 0, 0, .25); animation: stamp-pop 3.2s var(--ease) infinite; will-change: transform;
@@ -560,11 +560,11 @@ html.checkout-open { overflow: hidden; }
   .lasers span { height: 3px; background: linear-gradient(90deg, transparent, rgba(192, 51, 4, .85) 25%, #FF6A1F 50%, rgba(192, 51, 4, .85) 75%, transparent); box-shadow: 0 0 10px rgba(255, 106, 31, .55); }
   .lasers span:nth-child(3) { display: block; }
   .hero__bg::before, .hero__bg::after {
-    content: ""; position: absolute; z-index: 1; width: 62vw; height: 82vw; background: url("assets/img/brush-1.webp") center / contain no-repeat;
+    content: ""; position: absolute; z-index: 1; width: 62vw; height: 82vw; background: url("assets/img/brush-1-sm.webp") center / contain no-repeat;
     filter: hue-rotate(14deg) saturate(1.15); opacity: .9; pointer-events: none;
   }
   .hero__bg::before { left: -24vw; top: 6%; transform: rotate(-20deg); }
-  .hero__bg::after { right: -26vw; bottom: 10%; transform: rotate(160deg); background-image: url("assets/img/brush-2.webp"); }
+  .hero__bg::after { right: -26vw; bottom: 10%; transform: rotate(160deg); background-image: url("assets/img/brush-2-sm.webp"); }
   .smoke { opacity: 1; z-index: 2; }
   .hero__tag { background: rgba(255, 255, 255, .7); border-color: rgba(192, 51, 4, .35); color: var(--cream); }
   .headline__line { color: #1E0F0A; text-shadow: none; }
@@ -614,4 +614,35 @@ html.checkout-open { overflow: hidden; }
   .night .night__date span { color: #4B1F11; }
   .night .getthere__map iframe { filter: invert(.9) hue-rotate(180deg) saturate(.6) brightness(.9) contrast(1.1); }
   .night .btn--ghost { color: var(--cream); border-color: rgba(251, 242, 230, .35); background: rgba(10, 6, 5, .55); }
+}
+
+
+/* ================= RITMO DE FONDOS (13 nov): vídeo · oscuro · crema ================= */
+/* Manifiesto: vídeo del local teñido de rojo, con velo oscuro para leer bien */
+.manifesto { position: relative; isolation: isolate; overflow: hidden; background: #0A0605; }
+.manifesto__bg { position: absolute; inset: 0; z-index: -1; }
+.manifesto__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .2; transition: opacity 1s ease; }
+.manifesto__video.is-playing { opacity: .75; }
+.manifesto__bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10, 6, 5, .9) 0%, rgba(10, 6, 5, .45) 35%, rgba(10, 6, 5, .55) 70%, rgba(10, 6, 5, .92) 100%); }
+
+/* Ordenador: "Follow the party" en crema entre la noche negra y el cierre oscuro */
+@media (min-width: 641px) {
+  .hosts {
+    --cream: #1E0F0A; --text: #4A3730; --muted: #7D655B; --line: rgba(192, 51, 4, .2);
+    background: radial-gradient(60% 80% at 50% 0%, rgba(221, 86, 23, .16), transparent 70%), #F7ECE2; color: var(--text);
+  }
+  .hosts .host { background: rgba(255, 255, 255, .7); box-shadow: 0 8px 30px rgba(120, 50, 20, .1); }
+}
+
+/* Móvil: manifiesto (vídeo) y cierre en oscuro, alternando con el crema */
+@media (max-width: 640px) {
+  .manifesto, .closer {
+    --black: #0A0605; --night: #120A07; --cream: #FBF2E6; --text: #EADBD2; --muted: #A78F86;
+    --line: rgba(203, 69, 25, .18); --glow: 0 2px 0 rgba(31, 8, 0, .9), 0 0 22px rgba(194, 53, 6, .5);
+    color: var(--text);
+  }
+  .manifesto .cine__word--outline { -webkit-text-stroke-color: rgba(251, 242, 230, .8); }
+  .closer { background: radial-gradient(60% 70% at 50% 100%, rgba(173, 50, 9, .45), transparent 70%), #0A0605; }
+  .closer .beams { display: block !important; }
+  .closer .btn--ghost { color: var(--muted); }
 }
