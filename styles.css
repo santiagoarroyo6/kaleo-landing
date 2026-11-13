@@ -511,3 +511,88 @@ html.checkout-open { overflow: hidden; }
   .checkout__bar { padding-top: max(10px, env(safe-area-inset-top)); }
 }
 @media (prefers-reduced-motion: reduce) { .checkout[open] { animation: none; } }
+
+/* ================= OFERTA EN EL CTA (13 nov): sello "Prepared for you / Free pre-sale" + brillo ================= */
+.btn--offer { overflow: visible; }
+.offer__shine { position: absolute; inset: 0; border-radius: inherit; overflow: hidden; pointer-events: none; }
+.offer__shine::before {
+  content: ""; position: absolute; top: -20%; bottom: -20%; left: 0; width: 40%;
+  background: linear-gradient(100deg, transparent, rgba(255, 236, 214, .55), transparent);
+  transform: translate3d(-160%, 0, 0) skewX(-18deg); animation: offer-shine 3.2s ease-in-out infinite; will-change: transform;
+}
+@keyframes offer-shine { 0%, 55% { transform: translate3d(-160%, 0, 0) skewX(-18deg); } 85%, 100% { transform: translate3d(330%, 0, 0) skewX(-18deg); } }
+.offer__stamp {
+  position: absolute; top: -15px; right: -10px; z-index: 2; display: grid; padding: 5px 10px; border-radius: 7px;
+  background: #FFF4E8; color: var(--red); border: 1.5px solid var(--red);
+  font-family: "Montserrat", system-ui, sans-serif; font-size: 10px; font-weight: 800; letter-spacing: .12em; line-height: 1.2; white-space: nowrap;
+  transform: rotate(-7deg); box-shadow: 0 6px 18px rgba(0, 0, 0, .25); animation: stamp-pop 3.2s var(--ease) infinite; will-change: transform;
+}
+.offer__stamp span { grid-area: 1 / 1; text-align: center; animation: stamp-swap 6.4s steps(1) infinite; }
+.offer__stamp span + span { animation-delay: -3.2s; }
+@keyframes stamp-swap { 0% { opacity: 1; } 50% { opacity: 0; } }
+@keyframes stamp-pop { 0%, 78%, 100% { transform: rotate(-7deg) scale(1); } 84% { transform: rotate(-11deg) scale(1.14); } 90% { transform: rotate(-5deg) scale(.98); } }
+@media (prefers-reduced-motion: reduce) {
+  .offer__shine::before, .offer__stamp { animation: none; }
+  .offer__stamp span { animation: none; } .offer__stamp span + span { display: none; }
+}
+
+/* ================= MÓVIL EN CREMA (13 nov): fondo crema tipo Humanitix y humo naranja bien visible ================= */
+@media (max-width: 640px) {
+  :root {
+    --black: #F7ECE2; --night: #F2E2D5; --cream: #1E0F0A; --text: #4A3730; --muted: #7D655B;
+    --line: rgba(192, 51, 4, .2); --glow: 0 0 18px rgba(221, 86, 23, .35);
+  }
+  html, body { background: var(--black); }
+  .intro { background: #F7ECE2 !important; }
+
+  /* navegación clara con logo rojo */
+  .nav.is-solid { background: rgba(247, 236, 226, .96); box-shadow: 0 4px 20px rgba(120, 50, 20, .1); }
+  .nav__logo img, .footer__inner img { content: url("assets/img/kaleo-logo-red.svg"); }
+
+  /* inicio: crema con degradado melocotón, pinceladas y humo; sin vídeo ni luces de discoteca */
+  .hero { background: linear-gradient(180deg, #EFCDBE 0%, #F7ECE2 55%, #F7ECE2 100%); }
+  .hero__video, .hero__grade, .hero__vignette, .beams, .lasers, .strobe, .haze, .hit-flash { display: none !important; }
+  .hero__bg::before, .hero__bg::after {
+    content: ""; position: absolute; z-index: 1; width: 62vw; height: 82vw; background: url("assets/img/brush-1.webp") center / contain no-repeat;
+    filter: hue-rotate(14deg) saturate(1.15); opacity: .9; pointer-events: none;
+  }
+  .hero__bg::before { left: -24vw; top: 6%; transform: rotate(-20deg); }
+  .hero__bg::after { right: -26vw; bottom: 10%; transform: rotate(160deg); background-image: url("assets/img/brush-2.webp"); }
+  .smoke { opacity: 1; z-index: 2; }
+  .hero__tag { background: rgba(255, 255, 255, .7); border-color: rgba(192, 51, 4, .35); color: var(--cream); }
+  .headline__line { color: #1E0F0A; text-shadow: none; }
+  .headline__line--red { color: var(--red); text-shadow: 0 2px 0 rgba(120, 30, 0, .25); }
+  .hero__meta li { color: #1E0F0A; }
+  .countdown__label { text-shadow: none; }
+  .countdown__unit b { color: #1E0F0A; text-shadow: none; }
+  .countdown__unit--sec b { color: var(--red); text-shadow: none; }
+  .countdown__unit span { color: #8A6A5E; }
+  .countdown__live { color: #1E0F0A; text-shadow: none; }
+
+  /* CTA más compacto: botón principal y "Add to calendar" como enlace pequeño */
+  .hero__actions { margin-top: 22px; gap: 4px; }
+  .hero__actions .btn--ghost, .closer__actions .btn--ghost {
+    min-height: 40px; padding: 0 12px; border: 0; background: none; color: var(--muted);
+    font-size: 11px; letter-spacing: .18em; text-decoration: underline; text-underline-offset: 4px; box-shadow: none;
+  }
+  .btn--red { box-shadow: 0 10px 30px rgba(192, 51, 4, .3); }
+  .btn--ghost { color: var(--cream); border-color: rgba(30, 15, 10, .3); background: transparent; }
+
+  /* secciones */
+  .ticker { background: var(--red); box-shadow: none; border-color: transparent; }
+  .fact, .host { background: rgba(255, 255, 255, .65); box-shadow: 0 6px 24px rgba(120, 50, 20, .07); }
+  .cine__word--outline { -webkit-text-stroke-color: rgba(30, 15, 10, .75); }
+  .night__date { -webkit-text-stroke-color: #E3C3B2; }
+  .night__date span { color: #E3C3B2; }
+  .night.is-lit, .night__date.is-lit { text-shadow: none; }
+  .closer { background: radial-gradient(70% 60% at 50% 100%, rgba(221, 86, 23, .22), transparent 70%), var(--black); }
+  .closer .beams, .closer .haze { display: none !important; }
+  .getthere__map iframe { filter: none; }
+  .footer { background: #EFDFD2; }
+  .faq summary:hover, .faq__more:hover, .faqpage__back:hover { color: var(--red); }
+  .ticketbar { background: rgba(255, 250, 245, .97); border-color: rgba(192, 51, 4, .25); box-shadow: 0 10px 30px rgba(120, 50, 20, .18); }
+  .checkout::backdrop { background: rgba(60, 25, 10, .55); }
+  .checkout__bar { background: #1E0F0A; color: #FBF2E6; }
+  .checkout__close { color: #FBF2E6; }
+  .offer__stamp { right: 10px; top: -13px; }
+}
