@@ -602,4 +602,16 @@ html.checkout-open { overflow: hidden; }
   .checkout__bar { background: #1E0F0A; color: #FBF2E6; }
   .checkout__close { color: #FBF2E6; }
   .offer__stamp { right: 10px; top: -22px; }
+
+  /* THE NIGHT se queda en negro (13 nov) */
+  .night {
+    --black: #0A0605; --night: #120A07; --cream: #FBF2E6; --text: #EADBD2; --muted: #A78F86;
+    --line: rgba(203, 69, 25, .18); --glow: 0 2px 0 rgba(31, 8, 0, .9), 0 0 22px rgba(194, 53, 6, .5);
+    background: var(--night); color: var(--text);
+  }
+  .night .fact { background: linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, .015)); box-shadow: none; }
+  .night .night__date { -webkit-text-stroke-color: #4B1F11; }
+  .night .night__date span { color: #4B1F11; }
+  .night .getthere__map iframe { filter: invert(.9) hue-rotate(180deg) saturate(.6) brightness(.9) contrast(1.1); }
+  .night .btn--ghost { color: var(--cream); border-color: rgba(251, 242, 230, .35); background: rgba(10, 6, 5, .55); }
 }
