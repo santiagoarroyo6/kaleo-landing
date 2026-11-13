@@ -551,7 +551,14 @@ html.checkout-open { overflow: hidden; }
 
   /* inicio: crema con degradado melocotón, pinceladas y humo; sin vídeo ni luces de discoteca */
   .hero { background: linear-gradient(180deg, #EFCDBE 0%, #F7ECE2 55%, #F7ECE2 100%); }
-  .hero__video, .hero__grade, .hero__vignette, .beams, .lasers, .strobe, .haze, .hit-flash { display: none !important; }
+  .hero__grade, .hero__vignette, .beams, .strobe, .haze, .hit-flash { display: none !important; }
+  /* vídeo del local como capa transparente sobre el crema (13 nov) */
+  .hero__video { filter: sepia(.4) saturate(1.5) brightness(1.15); }
+  .hero__video.is-playing { opacity: .3; }
+  /* láseres en naranja intenso para que se vean sobre fondo claro */
+  .lasers { z-index: 3; }
+  .lasers span { height: 3px; background: linear-gradient(90deg, transparent, rgba(192, 51, 4, .85) 25%, #FF6A1F 50%, rgba(192, 51, 4, .85) 75%, transparent); box-shadow: 0 0 10px rgba(255, 106, 31, .55); }
+  .lasers span:nth-child(3) { display: block; }
   .hero__bg::before, .hero__bg::after {
     content: ""; position: absolute; z-index: 1; width: 62vw; height: 82vw; background: url("assets/img/brush-1.webp") center / contain no-repeat;
     filter: hue-rotate(14deg) saturate(1.15); opacity: .9; pointer-events: none;
@@ -594,5 +601,5 @@ html.checkout-open { overflow: hidden; }
   .checkout::backdrop { background: rgba(60, 25, 10, .55); }
   .checkout__bar { background: #1E0F0A; color: #FBF2E6; }
   .checkout__close { color: #FBF2E6; }
-  .offer__stamp { right: 10px; top: -13px; }
+  .offer__stamp { right: 10px; top: -22px; }
 }
