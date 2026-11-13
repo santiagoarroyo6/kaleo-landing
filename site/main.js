@@ -145,4 +145,17 @@
   if (wa && !/^(localhost|127\.)/.test(location.hostname)) {
     wa.href += encodeURIComponent(" " + location.origin + location.pathname);
   }
+
+  // Vídeos de fondo de secciones: se descargan solo al acercarse y se pausan fuera de pantalla
+  const lazyVids = document.querySelectorAll("video[data-lazy-src]");
+  if (lazyVids.length && "IntersectionObserver" in window && !reduce) {
+    const io = new IntersectionObserver(entries => entries.forEach(e => {
+      const v = e.target;
+      if (e.isIntersecting) {
+        if (!v.src) { v.src = v.dataset.lazySrc; v.addEventListener("playing", () => v.classList.add("is-playing"), { once: true }); }
+        v.play().catch(() => {});
+      } else if (v.src) v.pause();
+    }), { rootMargin: "300px 0px" });
+    lazyVids.forEach(v => io.observe(v));
+  }
 })();
