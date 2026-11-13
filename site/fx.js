@@ -3,6 +3,8 @@
 (() => {
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const coarse = window.matchMedia("(pointer: coarse)").matches;
+  // móvil en crema: humo naranja fuego, más denso y visible (13 nov)
+  const light = window.matchMedia("(max-width: 640px)").matches;
 
   /* ---------------- 1. Humo rojo en WebGL ---------------- */
   function smoke(host) {
@@ -29,11 +31,11 @@ void main(){
   vec2 q=vec2(fbm(p+vec2(0.,t*.06)),fbm(p+vec2(5.2,1.3)-t*.05));
   vec2 w=vec2(fbm(p+3.5*q+vec2(1.7,9.2)+t*.03),fbm(p+3.5*q+vec2(8.3,2.8)-t*.04));
   float f=fbm(p+3.*w+vec2(0.,-t*.09));
-  float body=smoothstep(.35,.95,f);
+  float body=smoothstep(${light ? '.3,.85' : '.35,.95'},f);
   float low=mix(1.,.45,smoothstep(.0,.9,uv.y));      // más humo abajo
-  vec3 deep=vec3(.22,.05,.01), red=vec3(.66,.18,.03), hot=vec3(.95,.42,.14);
+  ${light ? 'vec3 deep=vec3(.70,.14,.02), red=vec3(.86,.27,.04), hot=vec3(1.,.58,.22);' : 'vec3 deep=vec3(.22,.05,.01), red=vec3(.66,.18,.03), hot=vec3(.95,.42,.14);'}
   vec3 col=mix(deep,red,body); col=mix(col,hot,smoothstep(.75,1.,f)*.6);
-  float a=body*low*.75;
+  float a=body*low*${light ? '.95' : '.75'};
   col+=hot*md*.55; a+=md*.35;                        // foco donde tocas
   a*=1.+hit*.9; col*=1.+hit*.6;                      // pulso con cada golpe del titular
   gl_FragColor=vec4(col*a,a);
