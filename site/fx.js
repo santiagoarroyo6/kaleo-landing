@@ -3,7 +3,7 @@
 (() => {
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const coarse = window.matchMedia("(pointer: coarse)").matches;
-  // móvil en crema: humo naranja fuego, más denso y visible (13 nov)
+  // móvil en crema: humo rojo fuego, denso y visible (13 nov)
   const light = window.matchMedia("(max-width: 640px)").matches;
 
   /* ---------------- 1. Humo rojo en WebGL ---------------- */
@@ -33,7 +33,7 @@ void main(){
   float f=fbm(p+3.*w+vec2(0.,-t*.09));
   float body=smoothstep(${light ? '.3,.85' : '.35,.95'},f);
   float low=mix(1.,.45,smoothstep(.0,.9,uv.y));      // más humo abajo
-  ${light ? 'vec3 deep=vec3(.70,.14,.02), red=vec3(.86,.27,.04), hot=vec3(1.,.58,.22);' : 'vec3 deep=vec3(.22,.05,.01), red=vec3(.66,.18,.03), hot=vec3(.95,.42,.14);'}
+  ${light ? 'vec3 deep=vec3(.60,.05,.04), red=vec3(.82,.12,.07), hot=vec3(.96,.34,.24);' : 'vec3 deep=vec3(.22,.05,.01), red=vec3(.66,.18,.03), hot=vec3(.95,.42,.14);'}
   vec3 col=mix(deep,red,body); col=mix(col,hot,smoothstep(.75,1.,f)*.6);
   float a=body*low*${light ? '.95' : '.75'};
   col+=hot*md*.55; a+=md*.35;                        // foco donde tocas
