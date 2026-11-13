@@ -29,7 +29,7 @@ void main(){
   vec2 mp=vec2(m.x*asp,m.y)*2.4; vec2 d=p-mp; float md=exp(-dot(d,d)*1.6)*act;
   p+=normalize(d+1e-4)*md*.55;                       // el humo se aparta del dedo
   vec2 q=vec2(fbm(p+vec2(0.,t*.06)),fbm(p+vec2(5.2,1.3)-t*.05));
-  vec2 w=vec2(fbm(p+3.5*q+vec2(1.7,9.2)+t*.03),fbm(p+3.5*q+vec2(8.3,2.8)-t*.04));
+  ${light ? 'vec2 w=q*1.4+vec2(sin(t*.07),cos(t*.05))*.15;' : 'vec2 w=vec2(fbm(p+3.5*q+vec2(1.7,9.2)+t*.03),fbm(p+3.5*q+vec2(8.3,2.8)-t*.04));'}
   float f=fbm(p+3.*w+vec2(0.,-t*.09));
   float body=smoothstep(${light ? '.3,.85' : '.35,.95'},f);
   float low=mix(1.,.45,smoothstep(.0,.9,uv.y));      // más humo abajo
@@ -56,7 +56,7 @@ void main(){
     host.classList.add("has-smoke");
 
     // resolución baja a propósito: el humo es suave y así va fluido en móvil
-    const scale = coarse ? .25 : .4;
+    const scale = light ? .2 : coarse ? .25 : .4;
     const resize = () => {
       const w = Math.max(2, Math.round(host.clientWidth * scale)), h2 = Math.max(2, Math.round(host.clientHeight * scale));
       if (canvas.width !== w || canvas.height !== h2) { canvas.width = w; canvas.height = h2; gl.viewport(0, 0, w, h2); }
@@ -75,7 +75,7 @@ void main(){
     let on = true, raf = 0, last = performance.now(), t = Math.random() * 50;
     const frame = now => {
       raf = 0; if (!on) return;
-      if (coarse && now - last < 30) { raf = requestAnimationFrame(frame); return; }
+      if (coarse && now - last < (light ? 40 : 30)) { raf = requestAnimationFrame(frame); return; }
       const dt = Math.min(.05, (now - last) / 1000); last = now; t += dt;
       cur.x += (target.x - cur.x) * Math.min(1, dt * 5); cur.y += (target.y - cur.y) * Math.min(1, dt * 5);
       target.a = Math.max(0, target.a - dt * .35); cur.a += (target.a - cur.a) * Math.min(1, dt * 4);
@@ -85,14 +85,21 @@ void main(){
       gl.drawArrays(gl.TRIANGLES, 0, 3);
       raf = requestAnimationFrame(frame);
     };
-    const start = () => { if (!raf && on) { last = performance.now(); raf = requestAnimationFrame(frame); } };
+    let gated = light;
+    const start = () => { if (!gated && !raf && on) { last = performance.now(); raf = requestAnimationFrame(frame); } };
     // pausa cuando no se ve (batería)
     new IntersectionObserver(([e]) => {
       on = e.isIntersecting && !document.hidden;
       if (on) start(); else { cancelAnimationFrame(raf); raf = 0; }
     }).observe(host);
     document.addEventListener("visibilitychange", () => { on = !document.hidden; if (on) start(); });
-    start();
+    // en móvil el humo espera a que el inicio ya esté pintado, para no competir con la carga
+    if (light) {
+      const begin = () => setTimeout(() => { gated = false; start(); }, 400);
+      if (document.documentElement.classList.contains("is-ready")) begin();
+      else new MutationObserver((_, mo) => { if (document.documentElement.classList.contains("is-ready")) { mo.disconnect(); begin(); } })
+        .observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+    } else start();
   }
   smoke(document.querySelector(".hero__bg"));
 

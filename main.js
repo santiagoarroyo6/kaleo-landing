@@ -18,7 +18,7 @@
     document.fonts ? document.fonts.ready : null,
     logo && logo.decode ? logo.decode().catch(() => {}) : null
   ]);
-  const timeout = new Promise(r => setTimeout(r, 1500));
+  const timeout = new Promise(r => setTimeout(r, 600));
   const go = () => requestAnimationFrame(() => requestAnimationFrame(() => root.classList.add("is-ready")));
 
   // Intro "drop": negro, destello y el logo explota hacia ti; al salir empiezan los golpes del titular

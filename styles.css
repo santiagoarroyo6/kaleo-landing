@@ -553,11 +553,13 @@ html.checkout-open { overflow: hidden; }
   .hero { background: linear-gradient(180deg, #EFCDBE 0%, #F7ECE2 55%, #F7ECE2 100%); }
   .hero__grade, .hero__vignette, .beams, .strobe, .haze, .hit-flash { display: none !important; }
   /* vídeo del local como capa transparente sobre el crema (13 nov) */
-  .hero__video { filter: sepia(.4) saturate(1.5) brightness(1.15); }
+  .hero__video { filter: none; }
+  .hero__content.is-hit { animation: none; }
+  .hero__logo::before { animation: none; opacity: .6; }
   .hero__video.is-playing { opacity: .3; }
   /* láseres en naranja intenso para que se vean sobre fondo claro */
   .lasers { z-index: 3; }
-  .lasers span { height: 3px; background: linear-gradient(90deg, transparent, rgba(192, 51, 4, .85) 25%, #FF6A1F 50%, rgba(192, 51, 4, .85) 75%, transparent); box-shadow: 0 0 10px rgba(255, 106, 31, .55); }
+  .lasers span { height: 3px; background: linear-gradient(90deg, transparent, rgba(192, 51, 4, .85) 25%, #FF6A1F 50%, rgba(192, 51, 4, .85) 75%, transparent); box-shadow: none; }
   .lasers span:nth-child(3) { display: block; }
   .hero__bg::before, .hero__bg::after {
     content: ""; position: absolute; z-index: 1; width: 62vw; height: 82vw; background: url("assets/img/brush-1-sm.webp") center / contain no-repeat;
