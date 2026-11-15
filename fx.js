@@ -8,7 +8,7 @@
 
   /* ---------------- 1. Humo rojo en WebGL ---------------- */
   function smoke(host) {
-    if (!host || reduce) return;
+    if (!host || reduce || light) return;   // en móvil (crema) sin humo: solo vídeo y láseres (15 nov)
     const canvas = document.createElement("canvas");
     canvas.className = "smoke";
     const gl = canvas.getContext("webgl", { alpha: true, premultipliedAlpha: true, antialias: false, powerPreference: "low-power" });
